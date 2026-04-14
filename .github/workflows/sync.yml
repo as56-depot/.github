@@ -56,7 +56,7 @@ jobs:
         if ! git diff --cached --exit-code --quiet; then
           echo "Changes detected, committing..."
           git commit -m "chore: weekly sync from upstream ($UPSTREAM_BRANCH): $(date +'%Y-%m-%d')"
-          git push origin main
+          git push origin main --force
         else
           echo "No changes to sync."
         fi
