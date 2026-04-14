@@ -60,12 +60,3 @@ jobs:
         else
           echo "No changes to sync."
         fi
-
-    - name: Create Issue on Conflict
-      if: failure()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        gh issue create \
-            --title "🚨 Merge Conflict Detected: Manual Synchronization Required" \
-            --body "**Runtime Log**：[Click to view details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\n\nPlease resolve the conflicts locally as soon as possible and manually push to the repository to restore automatic synchronization."
